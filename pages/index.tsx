@@ -29,6 +29,18 @@ const Virus1:React.FC<props> = ({boundary, count}) => {
     }
   });
 
+
+
+
+  
+  const newPosition = (box: number, bounday: number) =>{
+    return (
+      boundary / 2 -
+      box / 2 -
+      (boundary - box) * (Math.round(Math.random() * 100 / 100))
+    )
+  }
+
   const updatePosition = (virusArray: VirusType[], boundary: number)=>{
   virusArray.forEach((virus, index)=>{
     virus.position.x = Math.random() * 100;
@@ -36,6 +48,15 @@ const Virus1:React.FC<props> = ({boundary, count}) => {
   })
   setVirus(virusArray)
   }
+        
+  // Groups virus together
+  // const updatePosition = (virusArray: VirusType[], boundary: number)=>{
+  //   virusArray.forEach((virus, index)=>{
+  //     virus.position.x = newPosition(virus.box, boundary) * 100;
+  //     virus.position.z = newPosition(virus.box, boundary) * 100;
+  //   })
+  //   setVirus(virusArray)
+  //   }
 
   useEffect(()=>{
       const tempVirus: VirusType[] =[];
