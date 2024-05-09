@@ -139,7 +139,9 @@ const Home: NextPage = () => {
           <meshStandardMaterial color="blue" />
         </mesh>
 
-        <Virus1 boundary={50} count={20} />
+        {/* <Virus1 boundary={.0005} count={120} /> */}
+
+        <Virus1 boundary={.050} count={20} />
 
         <TexturedSpheres />
         <Lights />
