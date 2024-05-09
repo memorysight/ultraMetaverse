@@ -1,9 +1,13 @@
+
+import { useHelper } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
-import { useRef } from "react";
-import {useHelper} from "@react-three/drei";
+import { useRef } from "react"; 
+
 
 const AnimatedBox = () => {
   const meshRef = useRef<THREE.Mesh>(null);
+
+  // useHelper(meshRef, BoxHelper, "blue")
 
   useFrame(() => {
     console.log("Hi");
@@ -12,8 +16,9 @@ const AnimatedBox = () => {
     }
   });
 
+
   return (
-    <mesh ref={meshRef} scale={[.5, 0.5, 0.5]}>
+    <mesh ref={meshRef} scale={[0.5, 0.5, 0.5]}>
       <boxGeometry />
       <meshStandardMaterial />
     </mesh>
