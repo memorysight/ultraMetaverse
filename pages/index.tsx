@@ -5,15 +5,38 @@ import CameraObrbitController from "../components/CameraOrbitController";
 import { Torus } from "@react-three/drei";
 import Lights from "../components/Lights";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
+import { useEffect, useState } from "react";
 
-const Virus1 = () => {
+type VirusType = {
+    position:{x: number, z: number},
+    box: number;
+
+}
+
+type props = {
+  boundary: number,
+  count: number;
+}
+
+const Virus1:React.FC<props> = ({boundary, count}) => {
   const model = useLoader(GLTFLoader, "./textures/Virus.glb");
+  const [virus, setVirus] = useState([])
 
   model.scene.traverse((object) => {
     if (object.isMesh) {
       object.castShadow = true;
     }
   });
+
+  useEffect(()=>{
+      const tempVirus: VirusType[] =[];
+      for(let i = 0; i < count; i++){
+        tempVirus.push({position: {x:0, z:0}, box:1})
+      }
+      console.log(tempVirus)
+  }, [boundary, count])
+
+  
   return (
 
     <group rotation={[0,4,0]}>
@@ -69,7 +92,7 @@ const Home: NextPage = () => {
           <meshStandardMaterial color="blue" />
         </mesh>
 
-        <Virus1 />
+        <Virus1 boundary={50} count={20} />
 
         <TexturedSpheres />
         <Lights />
