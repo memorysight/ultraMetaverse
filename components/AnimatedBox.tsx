@@ -3,16 +3,16 @@ import { useRef } from "react";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 
 
-const Virus1 = () =>{
-  const model = useLoader(GLTFLoader, "./textures/Virus.glb");
+// const Virus1 = () =>{
+//   const model = useLoader(GLTFLoader, "./textures/Virus.glb");
 
-  model.scene.traverse((object) => {
-    if(object.isMesh){
-      object.castShadow = true;
-    }
-  });
-  return <primitive object={model.scene} />
-};
+//   model.scene.traverse((object) => {
+//     if(object.isMesh){
+//       object.castShadow = true;
+//     }
+//   });
+//   return <primitive object={model.scene} />
+// };
 
 
 const AnimatedBox = () => {

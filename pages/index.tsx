@@ -7,6 +7,7 @@ import Lights from "../components/Lights";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 
 
+
 const Virus1 = () =>{
     const model = useLoader(GLTFLoader, "./textures/Virus.glb");
   
@@ -45,6 +46,8 @@ const Home: NextPage = () => {
           <coneGeometry />
           <meshStandardMaterial color="blue" />
         </mesh>
+       
+      
         <Virus1 />
         <TexturedSpheres />
         <Lights />
