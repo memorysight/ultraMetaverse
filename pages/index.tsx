@@ -6,6 +6,7 @@ import { Torus } from "@react-three/drei";
 import Lights from "../components/Lights";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import { useEffect, useState } from "react";
+import { BoxGeometry } from "three";
 
 type VirusType = {
     position:{x: number, z: number},
@@ -20,7 +21,7 @@ type props = {
 
 const Virus1:React.FC<props> = ({boundary, count}) => {
   const model = useLoader(GLTFLoader, "./textures/Virus.glb");
-  const [virus, setVirus] = useState([])
+  const [virus, setVirus] = useState<VirusType[]>([])
 
   model.scene.traverse((object) => {
     if (object.isMesh) {
@@ -28,18 +29,43 @@ const Virus1:React.FC<props> = ({boundary, count}) => {
     }
   });
 
+  const updatePosition = (virusArray: VirusType[], boundary: number)=>{
+  virusArray.forEach((virus, index)=>{
+    virus.position.x = Math.random() * 100;
+    virus.position.z = Math.random() * 100;
+  })
+  setVirus(virusArray)
+  }
+
   useEffect(()=>{
       const tempVirus: VirusType[] =[];
       for(let i = 0; i < count; i++){
         tempVirus.push({position: {x:0, z:0}, box:1})
       }
       console.log(tempVirus)
+      updatePosition(tempVirus, boundary);
   }, [boundary, count])
 
   
   return (
 
     <group rotation={[0,4,0]}>
+      {virus.map((virus, index) => {
+        return (
+         <object3D 
+         key={index} 
+         position={[virus.position.x, 0, virus.position.z]}
+         >
+          <mesh scale={[virus.box,virus.box,virus.box]}>
+            <boxGeometry/>
+            <meshBasicMaterial color="blue" wireframe/>
+
+          </mesh>
+          <primitive object={model.scene.clone()} />
+        </object3D> 
+        )
+
+      })}
       <primitive object={model.scene.clone()}/>
 
     </group>
