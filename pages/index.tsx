@@ -1,8 +1,8 @@
 import type { NextPage } from "next";
 import { Canvas} from "@react-three/fiber";
 import AnimatedBox from "../components/AnimatedBox";
-
 import CameraObrbitController from "../components/CameraOrbitController";
+import { OrbitControls, Stats } from "@react-three/drei";
 
 
 const Home: NextPage = () => {
@@ -11,9 +11,11 @@ const Home: NextPage = () => {
   return (
     <div className="container">
       <Canvas>
+      {/* <Stats /> */}
         <axesHelper visible={testing} args={[2]}/>
         <CameraObrbitController />
         <ambientLight intensity={0.1} />
+        
         <directionalLight color="red" position={[0, 0, 5]} />
         <AnimatedBox />
       </Canvas>

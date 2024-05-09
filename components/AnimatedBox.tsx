@@ -1,13 +1,11 @@
 
-import { useHelper } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 import { useRef } from "react"; 
 
 
+
 const AnimatedBox = () => {
   const meshRef = useRef<THREE.Mesh>(null);
-
-  // useHelper(meshRef, BoxHelper, "blue")
 
   useFrame(() => {
     console.log("Hi");
