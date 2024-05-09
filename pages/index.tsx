@@ -6,19 +6,41 @@ import { Torus } from "@react-three/drei";
 import Lights from "../components/Lights";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 
+const Virus1 = () => {
+  const model = useLoader(GLTFLoader, "./textures/Virus.glb");
+
+  model.scene.traverse((object) => {
+    if (object.isMesh) {
+      object.castShadow = true;
+    }
+  });
+  return (
+
+    <group rotation={[0,4,0]}>
+      <primitive object={model.scene.clone()}/>
+
+    </group>
 
 
-const Virus1 = () =>{
-    const model = useLoader(GLTFLoader, "./textures/Virus.glb");
-  
-    model.scene.traverse((object) => {
-      if(object.isMesh){
-        object.castShadow = true;
-      }
-    });
-    return <primitive object={model.scene} />
-  };
 
+
+    // <>
+    //   <group rotation={[0,4,0]}>
+    //     <object3D position={[2, 0, 0]}>
+    //       <primitive object={model.scene.clone()} />
+    //     </object3D>
+
+    //     <object3D position={[24, 0, 20]}>
+    //       <primitive object={model.scene.clone()} />
+    //     </object3D>
+
+    //     <object3D position={[6, 0, 15]}>
+    //       <primitive object={model.scene.clone()} />
+    //     </object3D>
+    //   </group>
+    // </>
+  );
+};
 
 const TexturedSpheres = () => {
   return (
@@ -46,16 +68,16 @@ const Home: NextPage = () => {
           <coneGeometry />
           <meshStandardMaterial color="blue" />
         </mesh>
-       
-      
+
         <Virus1 />
+
         <TexturedSpheres />
         <Lights />
 
         {/* Ground */}
         <mesh rotation-x={Math.PI * -0.5} receiveShadow>
           <planeGeometry args={[25, 25]} />
-          <meshStandardMaterial color={"green"} />
+          <meshStandardMaterial color={"lightblue"} />
         </mesh>
       </Canvas>
     </div>
