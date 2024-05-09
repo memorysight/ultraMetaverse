@@ -1,10 +1,8 @@
 import type { NextPage } from "next";
-import { Canvas, useThree } from "@react-three/fiber";
+import { Canvas} from "@react-three/fiber";
 import AnimatedBox from "../components/AnimatedBox";
-import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
-import { useEffect } from "react";
-import CameraObrbitController from "../components/CameraOrbitController";
 
+import CameraObrbitController from "../components/CameraOrbitController";
 
 
 const Home: NextPage = () => {
