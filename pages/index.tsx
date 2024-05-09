@@ -25,25 +25,25 @@ const Home: NextPage = () => {
 
   return (
     <div className="container">
-      <Canvas>
-      {/* <Stats /> */}
+      <Canvas shadows>
+    
         <axesHelper visible={testing} args={[2]}/>
         <CameraObrbitController />
 
 {/*         
         //simple box */}
-        <mesh  scale={[0.5, 0.5, 0.5]}>
+        <mesh  scale={[0.5, 0.5, 0.5]} castShadow>
            <coneGeometry />
             <meshStandardMaterial color="blue" />
          </mesh>
           
 
-<TexturedSpheres />
+          <TexturedSpheres />
           <Lights />
-        {/* <ambientLight  intensity={0.3}/>
-        <directionalLight position={[0,10,10]}/> */}
-        <mesh rotation-x={Math.PI * -0.5}>
-          <planeBufferGeometry args={[5,5]} />
+     
+     {/* Ground */}
+        <mesh rotation-x={Math.PI * -0.5} receiveShadow>
+          <planeGeometry args={[25,25]} />
           <meshStandardMaterial color={"green"}/>
 
         </mesh>
