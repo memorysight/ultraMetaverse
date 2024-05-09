@@ -1,5 +1,6 @@
 import { useFrame } from "@react-three/fiber";
 import { useRef } from "react";
+import {useHelper} from "@react-three/drei";
 
 const AnimatedBox = () => {
   const meshRef = useRef<THREE.Mesh>(null);
@@ -12,7 +13,7 @@ const AnimatedBox = () => {
   });
 
   return (
-    <mesh ref={meshRef} scale={[0.5, 0.5, 0.5]}>
+    <mesh ref={meshRef} scale={[.5, 0.5, 0.5]}>
       <boxGeometry />
       <meshStandardMaterial />
     </mesh>
