@@ -1,11 +1,16 @@
 
+
 import { useFrame } from "@react-three/fiber";
 import { useRef } from "react"; 
 
 
 
+
 const AnimatedBox = () => {
   const meshRef = useRef<THREE.Mesh>(null);
+
+    
+  
 
   useFrame(() => {
     console.log("Hi");
